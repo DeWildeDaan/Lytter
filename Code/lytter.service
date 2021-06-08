@@ -1,0 +1,14 @@
+[Unit]
+Description=ProjectOne Project
+After=network.target
+[Service]
+ExecStart=/usr/bin/python3 -u PASTE THE PATH TO THE APP.PY FILE
+WorkingDirectory=PASTE THE PATH TO THE BACKEND FOLDER
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=USER YOU CHOSE WHILE SETTING UP
+[Install]
+WantedBy=multi-user.target
+
+

@@ -1,0 +1,12 @@
+<svg id="Vuilbak_vol" data-name="Vuilbak vol" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Group_1" data-name="Group 1">
+    <path id="Path_5" data-name="Path 5" d="M0,0H32V32H0Z" fill="none"/>
+  </g>
+  <g id="Group_3" data-name="Group 3" transform="translate(4.015 2)">
+    <g id="Group_2" data-name="Group 2">
+      <path id="Path_6" data-name="Path 6" d="M15.183,2A11.128,11.128,0,0,0,4,13.48Q4,20.452,15.183,30q11.176-9.555,11.183-16.52A11.128,11.128,0,0,0,15.183,2Zm0,24.262C9.521,21.082,6.8,16.756,6.8,13.466a8.392,8.392,0,1,1,16.774.014C23.57,16.756,20.844,21.1,15.183,26.262Z" transform="translate(-4 -2)" fill="#033659"/>
+      <rect id="Rectangle_4" data-name="Rectangle 4" width="2" height="7" transform="translate(10.183 6.133)" fill="#033659"/>
+      <rect id="Rectangle_5" data-name="Rectangle 5" width="2" height="2" transform="translate(10.183 15.889)" fill="#033659"/>
+    </g>
+  </g>
+</svg>

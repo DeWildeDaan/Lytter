@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta name="theme-color" content="#3F6474" />
+		<title>Lytter - De Wilde Daan</title>
+
+		<link rel="icon" href="Favicon.svg" />
+		<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+		<link rel="manifest" href="manifest.json" />
+		<link rel="stylesheet" href="css/normalize.css" />
+		<link rel="stylesheet" href="css/screen.css" />
+		<link rel="stylesheet" href="https://use.typekit.net/cpt2fox.css" />
+
+		<script src="https://cdn.socket.io/4.0.1/socket.io.min.js" integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" crossorigin="anonymous"></script>
+		<script src="jscript/details.js"></script>
+		<script src="jscript/dataHandler.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	</head>
+	<body>
+		<div class="c-page">
+			<header class="o-row o-row--md o-row--header o-row--neutral-light">
+				<div class="o-container">
+					<div class="c-header">
+						<div>
+							<a href="index.html" class="c-logo">
+								<svg class="c-logo__symbol" xmlns="http://www.w3.org/2000/svg" width="251.466" height="86.889" viewBox="0 0 251.466 86.889">
+									<title>Lytter</title>
+									<g id="Logo" transform="translate(-16.355 -10.025)">
+									  <path id="Union_2" data-name="Union 2" d="M-11247.625,178.517h-41.125a10.011,10.011,0,0,1-10.278-9.654V110.94h61.688l0,57.922a10.02,10.02,0,0,1-9.905,9.661C-11247.374,178.524-11247.5,178.521-11247.625,178.517Zm-45.139-9.663h49.5V115.992h-49.5Zm24.6-23.711-7.112,8.9-1.841-2.187,7.163-8.88-7.138-8.925,1.79-2.216,7.138,8.88,7.087-8.829,1.79,2.213-7.163,8.877,7.163,8.854-1.79,2.213Zm-36.01-39.031V96.46h18l5.138-4.826h25.7l5.141,4.826h17.992v9.651Z" transform="translate(11320.527 -81.609)" fill="#3f6474"/>
+									  <path id="Lytter" d="M33.184-2.856H9.656V-47.6H6.528V0H33.184ZM60.86-35.7,49.5-3.6,38.148-35.7h-3.2L47.94-.2,43.18,12.58h2.992L64.056-35.7ZM81.192-2.108c-2.924,0-4.148-1.5-4.148-4.692V-33.184H86.5V-35.7H77.044V-49.572l-2.992,1.7V-35.7H69.428v2.516h4.624v26.86c0,4.76,2.108,6.936,6.052,6.936A15.068,15.068,0,0,0,86.5-.68l.136-2.652A11.858,11.858,0,0,1,81.192-2.108Zm22.644,0c-2.924,0-4.148-1.5-4.148-4.692V-33.184h9.452V-35.7H99.688V-49.572l-2.992,1.7V-35.7H92.072v2.516H96.7v26.86c0,4.76,2.108,6.936,6.052,6.936A15.068,15.068,0,0,0,109.14-.68l.136-2.652A11.858,11.858,0,0,1,103.836-2.108Zm26.384-34.34c-8.092,0-14.416,6.868-14.416,18.5,0,13.124,7.208,18.7,14.212,18.7a20.841,20.841,0,0,0,12.376-3.672L141.032-5.1a18.059,18.059,0,0,1-10.676,3.2c-6.6,0-11.288-5.508-11.56-15.1h25.432a9.115,9.115,0,0,0,.136-1.632C144.364-29.58,138.856-36.448,130.22-36.448Zm-11.424,17C119.2-28.9,123.964-33.8,130.22-33.8c6.8,0,11.016,5.3,11.288,14.348Zm48.552-17a10.4,10.4,0,0,0-10,7.208V-35.7H154.36V0h2.992V-21.488c0-8.636,4.76-12.172,9.384-12.172a12.788,12.788,0,0,1,5.508,1.088l.748-2.924A12.979,12.979,0,0,0,167.348-36.448Z" transform="translate(94.829 78.634)" fill="#00040d"/>
+									</g>
+								</svg>
+							</a>
+						</div>
+						<div class="c-header__nav c-header__nav--main">
+							<nav class="c-nav">
+								<ul class="o-list c-nav__list">
+									<li class="c-nav__item"><a href="index.html" class="c-nav__link c-is-selected">Home</a></li>
+									<li class="c-nav__item"><a href="edit.html" class="c-nav__link">Edit trashcans</a></li>
+								</ul>
+							</nav>
+						</div>
+						<p class="c-header__cta">
+							<a href="add.html" class="c-link-cta">Add a trashcan</a>
+						</p>
+						<div class="c-header__mobile-nav-trigger">
+							<button class="o-button-reset c-nav-trigger js-toggle-nav">
+								<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0 0h24v24H0z" fill="none" />
+									<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<section class="o-row">
+				<div class="o-container">
+					<div class="o-layout o-layout--gutter o-layout--align-center">
+						<div class="o-layout__item u-1-of-2-bp3">
+							<div class="u-max-width-sm">
+								<h2 class="c-lead c-lead--xl js-trashcan">Trashcan</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="o-row">
+				<div class="o-container">
+					<div class="o-layout o-layout--gutter">
+						<div class="o-layout__item u-1-of-2-bp3">
+							<div class="c-flag">
+								<div>
+									<p class="c-flag__text js-flag-text">Flag this trashcan as a illegal dumping spot.</p>
+								</div>
+								<div class="js-flag">
+									<svg class="c-flag__btn-symbol" id="assistant_photo_black_24dp" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+										<path id="Path_23" data-name="Path 23" d="M0,0H24V24H0Z" fill="none"/>
+										<path id="Path_24" data-name="Path 24" d="M12.36,6l.08.39L12.76,8H18v6H14.64l-.08-.39L14.24,12H7V6h5.36M14,4H5V21H7V14h5.6l.4,2h7V6H14.4Z" fill="#3f6474"/>
+									</svg>
+								</div>
+							</div>
+							<div class="c-lid js-lid">
+								<div>
+									<p class="c-lid__text">Lid:</p>
+								</div>
+								<div class="c-lid__lock js-lock">
+									<svg class="c-lid__lock-symbol" id="lock_open_black_24dp_1_" data-name="lock_open_black_24dp (1)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+										<path id="Path_32" data-name="Path 32" d="M0,0H24V24H0Z" fill="none"/>
+										<path id="Path_33" data-name="Path 33" d="M18,8H17V6A5,5,0,0,0,7,6H9a3,3,0,0,1,6,0V8H6a2.006,2.006,0,0,0-2,2V20a2.006,2.006,0,0,0,2,2H18a2.006,2.006,0,0,0,2-2V10A2.006,2.006,0,0,0,18,8Zm0,12H6V10H18Zm-6-3a2,2,0,1,0-2-2A2.006,2.006,0,0,0,12,17Z" fill="#3f6474"/>
+									</svg>
+								</div>
+
+								<div>
+									<p class="c-lid__text js-lock-text">Open</p>
+								</div>
+							</div>
+							<div class="c-info">
+								<div>
+									<p class="c-info__text">Collected trash:</p>
+								</div>
+
+								<div>
+									<p class="c-info__text js-weight">0.0 Kg</p>
+								</div>
+							</div>
+							<div class="c-info">
+								<div>
+									<p class="c-info__text">Volume:</p>
+								</div>
+
+								<div class="js-chart-volume">
+								</div>
+							</div>
+						</div>
+
+						<div class="o-layout__item u-1-of-2-bp3">
+							<div class="c-graph">
+								<div>
+									<ul>
+										<li class="c-graph__select c-is-selected js-collected">Collected trash</li>
+										<li class="c-graph__select js-collections">Trash collections</li>
+									</ul>
+								</div>
+	
+								<div class="js-chart-main"></div>
+							</div>
+						</div>
+
+					</div>
+			</section>
+		</div>
+
+		<aside class="c-mobile-nav">
+			<div class="c-mobile-nav__bg"></div>
+			<div class="c-mobile-nav__body">
+				<div class="c-mobile-nav__header">
+					<p class="c-logo">
+						<svg class="c-logo__symbol" xmlns="http://www.w3.org/2000/svg" width="251.466" height="86.889" viewBox="0 0 251.466 86.889">
+							<title>Lytter</title>
+							<g id="Logo" transform="translate(-16.355 -10.025)">
+							  <path id="Union_2" data-name="Union 2" d="M-11247.625,178.517h-41.125a10.011,10.011,0,0,1-10.278-9.654V110.94h61.688l0,57.922a10.02,10.02,0,0,1-9.905,9.661C-11247.374,178.524-11247.5,178.521-11247.625,178.517Zm-45.139-9.663h49.5V115.992h-49.5Zm24.6-23.711-7.112,8.9-1.841-2.187,7.163-8.88-7.138-8.925,1.79-2.216,7.138,8.88,7.087-8.829,1.79,2.213-7.163,8.877,7.163,8.854-1.79,2.213Zm-36.01-39.031V96.46h18l5.138-4.826h25.7l5.141,4.826h17.992v9.651Z" transform="translate(11320.527 -81.609)" fill="#3f6474"/>
+							  <path id="Lytter" d="M33.184-2.856H9.656V-47.6H6.528V0H33.184ZM60.86-35.7,49.5-3.6,38.148-35.7h-3.2L47.94-.2,43.18,12.58h2.992L64.056-35.7ZM81.192-2.108c-2.924,0-4.148-1.5-4.148-4.692V-33.184H86.5V-35.7H77.044V-49.572l-2.992,1.7V-35.7H69.428v2.516h4.624v26.86c0,4.76,2.108,6.936,6.052,6.936A15.068,15.068,0,0,0,86.5-.68l.136-2.652A11.858,11.858,0,0,1,81.192-2.108Zm22.644,0c-2.924,0-4.148-1.5-4.148-4.692V-33.184h9.452V-35.7H99.688V-49.572l-2.992,1.7V-35.7H92.072v2.516H96.7v26.86c0,4.76,2.108,6.936,6.052,6.936A15.068,15.068,0,0,0,109.14-.68l.136-2.652A11.858,11.858,0,0,1,103.836-2.108Zm26.384-34.34c-8.092,0-14.416,6.868-14.416,18.5,0,13.124,7.208,18.7,14.212,18.7a20.841,20.841,0,0,0,12.376-3.672L141.032-5.1a18.059,18.059,0,0,1-10.676,3.2c-6.6,0-11.288-5.508-11.56-15.1h25.432a9.115,9.115,0,0,0,.136-1.632C144.364-29.58,138.856-36.448,130.22-36.448Zm-11.424,17C119.2-28.9,123.964-33.8,130.22-33.8c6.8,0,11.016,5.3,11.288,14.348Zm48.552-17a10.4,10.4,0,0,0-10,7.208V-35.7H154.36V0h2.992V-21.488c0-8.636,4.76-12.172,9.384-12.172a12.788,12.788,0,0,1,5.508,1.088l.748-2.924A12.979,12.979,0,0,0,167.348-36.448Z" transform="translate(94.829 78.634)" fill="#00040d"/>
+							</g>
+						</svg>
+					</p>
+					<button class="o-button-reset c-nav-trigger js-toggle-nav">
+						<svg class="c-nav-trigger__svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+						</svg>
+					</button>
+				</div>
+				<div class="c-mobile-nav__nav c-mobile-nav__nav--main">
+					<nav class="c-nav">
+						<ul class="o-list c-nav__list">
+							<li class="c-nav__item"><a href="index.html" class="c-nav__link c-is-selected">Home</a></li>
+							<li class="c-nav__item"><a href="edit.html" class="c-nav__link">Edit trashcans</a></li>
+						</ul>
+					</nav>
+					<p class="c-mobile-cta">
+						<a href="add.html" class="c-link-cta">Add a trashcan</a>
+					</p>
+				</div>
+			</div>
+		</aside>
+	</body>
+</html>

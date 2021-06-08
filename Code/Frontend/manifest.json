@@ -1,0 +1,11 @@
+{
+    "name": "Lytter",
+    "short_name": "Lytter",
+    "icons": [{
+      "src": "google-touch-icon.png",
+      "sizes": "512x512"
+    }],
+    "theme_color": "#3F6474",
+    "background_color": "#F2ECD6",
+    "display": "standalone"
+  }

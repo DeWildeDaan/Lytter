@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-Favicon">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="Favicon" clip-path="url(#clip-Favicon)">
+    <g id="Symbol">
+      <path id="Path_1" data-name="Path 1" d="M0,0H32V32H0Z" fill="none"/>
+      <path id="Union_2" data-name="Union 2" d="M16.148,25.956H4.4a2.916,2.916,0,0,1-2.935-2.884V5.768H19.085v17.3a2.925,2.925,0,0,1-2.829,2.886ZM3.258,23.069H17.395V7.277H3.258Zm7.026-7.084-2.031,2.66-.526-.653,2.046-2.653L7.734,12.672l.511-.662,2.038,2.653,2.024-2.638.511.661-2.046,2.652,2.046,2.645-.511.661ZM0,4.325V1.442H5.14L6.607,0h7.34l1.468,1.442h5.138V4.325Z" transform="translate(5.723 3.025)" fill="#3f6474"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,1426 @@
+/*------------------------------------*\
+  #GENERIC
+\*------------------------------------*/
+
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+html {
+	font-size: 16px;
+	line-height: 19px;
+	font-weight: 300;
+	font-family: Interstate, 'Helvetica Neue', Helvetica, arial, sans-serif;
+	color: #00040d;
+	background-color: #ffffff;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Customize the background color to match your design.
+ */
+
+::selection {
+	background: #3f6474;
+	color: white;
+	text-shadow: none;
+}
+
+/*------------------------------------*\
+  #Elements
+\*------------------------------------*/
+
+/*
+    Elements: Images
+    ---
+    Default markup for images to make them responsive
+*/
+
+img {
+	max-width: 100%;
+	vertical-align: top;
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1 {
+	font-size: 40px;
+	line-height: 48px;
+	font-weight: 400;
+	margin: 0 0 24px;
+}
+
+h2 {
+	font-size: 24px;
+	line-height: 29px;
+	margin: 0 0 24px;
+}
+
+h3 {
+	font-size: 18px;
+	line-height: 24px;
+	margin: 0 0 24px;
+}
+
+h4,
+h5,
+h6 {
+	font-size: 16px;
+	line-height: 24px;
+	margin: 0 0 24px;
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+	margin: 0 0 24px;
+}
+
+ul,
+ol {
+	padding-left: 24px;
+}
+
+li ul,
+li ol {
+	margin-bottom: 0;
+}
+
+blockquote {
+	font-style: italic;
+	font-size: 23px;
+	line-height: 32px;
+	margin: 0 0 24px;
+	font-family: 'Times New Roman', serif;
+}
+
+blockquote * {
+	font-size: inherit;
+	line-height: inherit;
+}
+
+figcaption {
+	font-size: 12px;
+	line-height: 16px;
+	padding-top: 8px;
+	color: Grey;
+}
+
+hr {
+	border: 0;
+	height: 1px;
+	background: LightGrey;
+	margin: 0 0 24px;
+}
+
+a {
+	color: #ffffff;
+	transition: all 0.1s ease-in-out;
+}
+
+a:visited,
+a:active {
+	color: #00040d;
+}
+
+a:hover,
+a:focus {
+	color: #33363d;
+}
+
+/*------------------------------------*\
+  #OBJECTS
+\*------------------------------------*/
+
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-row {
+	padding: 24px 24px 0;
+	display: flow-root;
+}
+
+/* size modifiers */
+
+.o-row--lg {
+	padding-top: 48px;
+	padding-bottom: 24px;
+}
+
+.o-row--xl {
+	padding-top: 72px;
+	padding-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+	.o-row {
+		padding-left: 48px;
+		padding-right: 48px;
+	}
+
+	.o-row--md {
+		padding-top: 48px;
+		padding-bottom: 24px;
+	}
+
+	.o-row--lg {
+		padding-top: 72px;
+		padding-bottom: 48px;
+	}
+}
+
+/* color modifiers */
+
+.o-row--neutral-light {
+	background-color: #f2ecd6;
+}
+
+@media (min-width: 992px) {
+	.o-row--xl {
+		padding-top: 96px;
+		padding-bottom: 72px;
+	}
+}
+
+/*
+    Objects: Container
+    ---
+    Creates a horizontal container that sets de global max-width
+*/
+
+.o-container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	max-width: 90em; /* 90 * 16px = 1440px */
+}
+
+/*
+    Objects: section
+    ---
+    Creates vertical whitespace between adjacent sections inside a row
+*/
+
+.o-section {
+	display: flow-root;
+}
+
+.o-section + .o-section {
+	margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+	.o-section--lg + .o-section--lg,
+	.o-section--xl + .o-section--xl {
+		margin-top: 48px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.o-section--xl + .o-section--xl {
+		margin-top: 72px;
+	}
+}
+
+/*
+    Objects: Layout
+    ---
+    The layout object provides us with a column-style layout system. This object
+    contains the basic structural elements, but classes should be complemented
+    with width utilities
+*/
+
+.o-layout {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.o-layout__item {
+	flex-basis: 100%;
+}
+
+/* gutter modifiers, these affect o-layout__item too */
+
+.o-layout--gutter {
+	margin: 0 -12px;
+}
+
+.o-layout--gutter > .o-layout__item {
+	padding: 0 12px;
+}
+
+.o-layout--gutter-sm {
+	margin: 0 -6px;
+}
+
+.o-layout--gutter-sm > .o-layout__item {
+	padding: 0 6px;
+}
+
+.o-layout--gutter-lg {
+	margin: 0 -24px;
+}
+
+.o-layout--gutter-lg > .o-layout__item {
+	padding: 0 24px;
+}
+
+/* reverse horizontal row modifier */
+
+.o-layout--row-reverse {
+	flex-direction: row-reverse;
+}
+
+/* Horizontal alignment modifiers*/
+
+.o-layout--justify-start {
+	justify-content: flex-start;
+}
+
+.o-layout--justify-end {
+	justify-content: flex-end;
+}
+
+.o-layout--justify-center {
+	justify-content: center;
+}
+
+.o-layout--justify-space-around {
+	justify-content: space-around;
+}
+
+.o-layout--justify-space-evenly {
+	justify-content: space-evenly;
+}
+
+.o-layout--justify-space-between {
+	justify-content: space-between;
+}
+
+/* Vertical alignment modifiers */
+
+.o-layout--align-start {
+	align-items: flex-start;
+}
+
+.o-layout--align-end {
+	align-items: flex-end;
+}
+
+.o-layout--align-center {
+	align-items: center;
+}
+
+.o-layout--align-baseline {
+	align-items: baseline;
+}
+
+/* Vertical alignment modifiers that only work if there is one than one flex item */
+
+.o-layout--align-content-start {
+	align-content: start;
+}
+
+.o-layout--align-content-end {
+	align-content: end;
+}
+
+.o-layout--align-content-center {
+	align-content: center;
+}
+
+.o-layout--align-content-space-around {
+	align-content: space-around;
+}
+
+.o-layout--align-content-space-between {
+	align-content: space-between;
+}
+
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list {
+	list-style: none;
+	padding: 0;
+}
+
+/*
+    Object: Button reset
+    ---
+    Small button reset object
+*/
+
+.o-button-reset {
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: auto;
+	overflow: visible;
+	background: transparent;
+
+	/* inherit font & color from ancestor */
+	color: inherit;
+	font: inherit;
+
+	/* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+	line-height: normal;
+
+	/* Corrects font smoothing for webkit */
+	-webkit-font-smoothing: inherit;
+	-moz-osx-font-smoothing: inherit;
+
+	/* Corrects inability to style clickable `input` types in iOS */
+	-webkit-appearance: none;
+}
+
+/*------------------------------------*\
+  #COMPONENTS
+\*------------------------------------*/
+
+/*
+    Component: Logo
+    ---
+    Website main logo
+*/
+.c-logo {
+	display: flex;
+	width: 80%;
+}
+
+.c-logo__symbol {
+	height: 100%;
+}
+
+@media (max-width: 1050px) {
+	.c-logo__symbol {
+		margin-bottom: 16px;
+	}
+}
+
+@media (max-width: 350px) {
+	.c-logo__symbol {
+		width: 70%;
+		margin-bottom: 16px;
+	}
+}
+
+/*
+    Component: Header
+    ---
+    Main header of the website
+*/
+
+.c-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.c-header__logo {
+	margin-left: -32;
+}
+
+.c-header__nav,
+.c-header__cta {
+	display: none;
+}
+
+@media (min-width: 1050px) {
+	.c-header__nav,
+	.c-header__cta {
+		display: block;
+	}
+
+	.c-header__nav {
+		margin-right: 24px;
+		display: flex;
+		flex-grow: 1;
+		justify-content: flex-end;
+	}
+
+	.c-header__mobile-nav-trigger {
+		display: none;
+	}
+}
+
+/*
+    Component: Nav
+    ---
+    Main navigation of the site
+*/
+.c-nav-trigger {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 24px;
+	width: 24px;
+	height: 24px;
+}
+
+.c-nav-trigger__svg {
+	fill: #00040d;
+	height: 100%;
+}
+.c-nav {
+	font-size: 20px;
+	line-height: 29px;
+}
+
+.c-nav__link {
+	position: relative;
+	text-decoration: none;
+	font-weight: 400;
+	display: inline-block;
+	padding-top: 16px;
+	padding-bottom: 8px;
+}
+
+.c-nav__link,
+.c-nav__link:visited,
+.c-nav__link:active {
+	color: #00040d;
+}
+
+.c-nav__link:hover,
+.c-nav__link:focus {
+	color: #3f6474;
+}
+
+.c-nav__link::before {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 1px;
+	width: 100%;
+	background-color: #3f6474;
+
+	transform: scaleX(0);
+	transform-origin: left;
+
+	transition-property: transform background-color;
+	transition-duration: 0.175s;
+	transition-timing-function: ease-in;
+}
+
+.c-nav__link:hover::before {
+	transform: scaleX(1);
+	background-color: #3f6474;
+}
+
+@media (min-width: 992px) {
+	.c-nav__list {
+		display: flex;
+	}
+
+	.c-nav__item--cta {
+		margin-left: 20px;
+	}
+
+	.c-nav__link {
+		margin: 8px 40px;
+	}
+}
+
+/*
+    Component: CTA link
+    ---
+    Small cta link with custom animation
+*/
+
+.c-link-cta {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 20px;
+	line-height: 29px;
+	font-weight: 400;
+	padding: 16px;
+	background: #3f6474;
+	border-radius: 5px;
+}
+
+.c-link-cta,
+.c-link-cta:visited,
+.c-link-cta:active {
+	color: #f2f2f2;
+}
+
+.c-link-cta:hover,
+.c-link-cta:focus {
+	color: #f2f2f2;
+	background: #033659;
+}
+
+.c-link-cta:active {
+	background-color: #033659;
+}
+
+/*
+    Component: Mobile nav
+    ---
+    Dedicated mobile nav component
+*/
+
+.c-mobile-nav {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 100vh;
+	opacity: 0;
+	transition: opacity 0.25s;
+	pointer-events: none;
+}
+
+.has-mobile-nav .c-mobile-nav {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.c-mobile-nav__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 32px;
+}
+
+.c-mobile-nav__bg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	background-color: #202024;
+	opacity: 0;
+	transition: opacity 0.25 ease;
+}
+
+.has-mobile-nav .c-mobile-nav__bg {
+	opacity: 0.5;
+}
+
+.c-mobile-nav__body {
+	position: relative;
+	padding: 24px;
+	height: 100vh;
+	width: 100vw;
+	background-color: #fff;
+
+	transform: translateX(-100%);
+	transition: transform 0.25s ease;
+}
+
+.has-mobile-nav .c-mobile-nav__body {
+	transform: translateX(0);
+}
+
+.c-page {
+	transform: translateX(0);
+	transition: transform 0.25s ease;
+}
+
+.has-mobile-nav .c-page {
+	transform: translateX(25%);
+}
+
+@media (min-width: 1050px) {
+	.c-mobile-nav__body {
+		padding: 48px;
+	}
+}
+
+@media (min-width: 1050px) {
+	/* Hide the mobile nav on larger viewports even whent it's open on smaller screens */
+	.c-mobile-nav {
+		display: none !important;
+	}
+}
+
+.c-mobile-cta {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 400;
+	padding: 8px;
+	background: #3f6474;
+	border-radius: 5px;
+}
+
+.c-mobile-cta,
+.c-mobile-cta:visited,
+.c-mobile-cta:active {
+	color: #f2f2f2;
+}
+
+.c-mobile-cta:hover,
+.c-mobile-cta:focus {
+	color: #f2f2f2;
+	background: #033659;
+}
+
+.c-mobile-cta:active {
+	background-color: #033659;
+}
+
+/*
+    Component: Map
+    ---
+    The map on the home screen
+*/
+.c-map {
+	height: 70vh;
+	border-radius: 5px;
+}
+
+.c-popup__link {
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 20px;
+	font-weight: 400;
+}
+
+.c-popup__link,
+.c-popup__link:visited,
+.c-popup__link:active {
+	color: #3f6474;
+}
+
+.c-popup__link:hover,
+.c-popup__link:focus {
+	color: #033659;
+}
+
+.c-popup__link:active {
+	color: #033659;
+}
+
+/*
+    Component: Form
+    ---
+    The forms to edit and add trashcans
+*/
+.c-form {
+	width: 50%;
+	margin: auto;
+}
+
+.c-form__row {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 24px;
+}
+
+.c-form__label {
+	margin-bottom: 8px;
+	font-weight: 300;
+}
+
+.c-form__confirm {
+	text-decoration: none;
+	background-color: #3f6474;
+	color: #f2f2f2;
+	margin-top: 16px;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	float: right;
+}
+
+.c-form__confirm:hover {
+	background-color: #033659;
+}
+
+.c-form__cancel {
+	text-decoration: none;
+	background-color: #f2f2f2;
+	color: #3f6474;
+	margin-right: 16px;
+	margin-top: 16px;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	float: right;
+}
+
+.c-form__cancel:hover {
+	background-color: #c6c8cb;
+}
+
+.c-form__invalid{
+	background-color: #FFCAC9;
+	opacity: 0.8;
+	border: 1px solid #FF6A74;
+	border-radius: 2px;
+}
+
+@media (max-width: 1050px) {
+	.c-form {
+		width: 75%;
+	}
+
+	.c-form__confirm,
+	.c-form__cancel {
+		width: 100%;
+		margin-right: 0px;
+	}
+}
+
+/*
+    Component: Trashcans
+    ---
+    The list of trashcans on the edit page
+*/
+.c-trashcan {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 60% 10% 10%;
+	gap: 1.5rem;
+	margin-top: 16px;
+	align-items: center;
+	background-color: #f2ecd6;
+	outline: none;
+	border-radius: 5px;
+}
+
+.c-trashcan__name {
+	margin: 27px 24px;
+	font-size: 24px;
+	font-weight: 300;
+}
+
+.c-trashcan__edit {
+	display: flex;
+	justify-content: center;
+}
+
+.c-trashcan__delete {
+	display: flex;
+	justify-content: center;
+}
+
+.c-trashcan__edit-symbol {
+	height: 24px;
+	cursor: pointer;
+	will-change: opacity;
+}
+
+.c-trashcan__edit-symbol:hover {
+	opacity: 0.7;
+	cursor: pointer;
+	will-change: opacity;
+}
+
+.c-trashcan__delete-symbol {
+	height: 24px;
+	cursor: pointer;
+	will-change: opacity;
+}
+
+.c-trashcan__delete-symbol:hover {
+	opacity: 0.7;
+}
+S .c-trashcan__edit-symbol:hover {
+	opacity: 0.7;
+}
+
+@media (max-width: 1050px) {
+	.c-trashcan__name {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 350px) {
+	.c-trashcan__name {
+		font-size: 12px;
+	}
+	.c-trashcan__delete-symbol {
+		height: 16px;
+	}
+	.c-trashcan__edit-symbol {
+		height: 16px;
+	}
+}
+/*
+    Component: Flag
+    ---
+    The flag component
+*/
+.c-flag {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 80% 20%;
+	gap: 1.5rem 1.5rem;
+	margin-top: 16px;
+	margin-bottom: 80px;
+	align-items: center;
+	outline: none;
+}
+
+.c-flag__text {
+	margin: 27px 24px;
+	font-size: 24px;
+	line-height: 29px;
+	font-weight: 300;
+}
+
+.c-flag__btn {
+	display: flex;
+	justify-content: center;
+}
+
+.c-flag__btn-symbol {
+	height: 56px;
+	cursor: pointer;
+	will-change: opacity;
+}
+
+.c-flag__btn-symbol:hover {
+	opacity: 0.7;
+	cursor: pointer;
+	will-change: opacity;
+}
+
+@media (max-width: 768px) {
+	.c-flag__text {
+		font-size: 16px;
+		line-height: 20px;
+	}
+}
+
+@media (max-width: 1050px) {
+	.c-flag {
+		margin-bottom: 40px;
+	}
+}
+
+/*
+    Component: Lid
+    ---
+    The lid state
+*/
+.c-lid {
+	width: 100%;
+	display: grid;
+	cursor: pointer;
+	grid-template-columns: 60% 10% 30%;
+	gap: 1.5rem;
+	margin-top: 16px;
+	align-items: center;
+	background-color: #f2ecd6;
+	outline: none;
+	border-radius: 5px;
+}
+
+.c-lid:hover {
+	opacity: 0.8;
+	cursor: pointer;
+	will-change: opacity;
+}
+
+.c-lid__text {
+	margin: 27px 24px;
+	font-size: 24px;
+	font-weight: 300;
+}
+
+.c-lid__lock {
+	display: flex;
+	justify-content: center;
+}
+
+.c-lid__lock-symbol {
+	height: 24px;
+}
+
+@media (max-width: 768px) {
+	.c-lid {
+		grid-template-columns: 50% 10% 20%;
+	}
+	.c-lid__text {
+		font-size: 16px;
+	}
+}
+
+/*
+    Component: Info
+    ---
+    The info of the trashcan
+*/
+.c-info {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 70% 20%;
+	gap: 1.5rem 1.5rem;
+	margin-top: 16px;
+	background-color: #f2ecd6;
+	border-radius: 5px;
+	margin-bottom: 16px;
+	align-items: center;
+	outline: none;
+}
+
+.c-info__text {
+	margin: 27px 24px;
+	font-size: 20px;
+	font-weight: 300;
+}
+
+@media (max-width: 768px) {
+	.c-info {
+		grid-template-columns: 60% 20%;
+	}
+	.c-info__text {
+		font-size: 16px;
+	}
+}
+
+/*
+    Component: Graph
+    ---
+    The main Graph
+*/
+.c-graph {
+	width: 99%;
+	margin-top: 48px;
+}
+
+.c-graph__select {
+	position: relative;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	margin-right: 40px;
+	margin-bottom: 16px;
+	padding-bottom: 8px;
+}
+
+.c-graph__select:hover {
+	opacity: 0.8;
+	cursor: pointer;
+	will-change: opacity;
+}
+
+.c-graph__select::before {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 1px;
+	width: 100%;
+	background-color: #3f6474;
+
+	transform: scaleX(0);
+	transform-origin: left;
+
+	transition-property: transform background-color;
+	transition-duration: 0.175s;
+	transition-timing-function: ease-in;
+}
+
+.c-graph__select:hover::before {
+	transform: scaleX(1);
+	background-color: #3f6474;
+}
+
+@media (max-width: 768px) {
+	.c-graph__select {
+		font-size: 16px;
+		margin-right: 32px;
+		margin-left: -16px;
+	}
+}
+
+@media (max-width: 1050px) {
+	.c-graph {
+		margin-top: 40px;
+	}
+}
+
+/*
+    Component: Selected
+    ---
+    Selected items in nav
+*/
+.c-is-selected::before {
+	color: #3f6474 !important;
+	transform: scaleX(1) !important;
+	background-color: #3f6474 !important;
+}
+
+.c-test {
+	font-family: Interstate;
+}
+
+/*------------------------------------*\
+  #UTILITIES
+\*------------------------------------*/
+
+/*
+    Utilities: spacing
+    ---
+    Utility classes to put specific margins and paddings onto elements
+*/
+
+.u-pt-clear {
+	padding-top: 0 !important;
+}
+
+.u-mb-clear {
+	margin-bottom: 0 !important;
+}
+
+.u-mb-xs {
+	margin-bottom: 4px !important;
+}
+
+.u-mb-sm {
+	margin-bottom: 8px !important;
+}
+
+.u-mb-md {
+	margin-bottom: 16px !important;
+}
+
+.u-mb-lg {
+	margin-bottom: 32px !important;
+}
+
+.u-mb-xl {
+	margin-bottom: 48px !important;
+}
+
+/*
+    Utilities: max-width
+    ---
+    Utility classes to put specific max widths onto elements
+*/
+
+.u-max-width-sm {
+	max-width: 24em !important;
+}
+
+.u-max-width-md {
+	max-width: 45em !important;
+}
+
+.u-max-width-lg {
+	max-width: 60em !important;
+}
+
+.u-max-width-xl {
+	max-width: 75em !important;
+}
+
+.u-max-width-none {
+	max-width: none !important;
+}
+
+/*
+    Utility: Flex
+    ---
+    Utility classes to put specific flex properties onto elements
+    Will be mostly used on o-layout__item
+*/
+
+.u-flex-basis-auto {
+	flex-basis: auto !important;
+}
+
+.u-flex-grow-1 {
+	flex-grow: 1 !important;
+}
+
+.u-1-of-2 {
+	flex-basis: calc(100% / 2) !important;
+}
+
+.u-1-of-3 {
+	flex-basis: calc(100% / 3) !important;
+}
+
+.u-2-of-3 {
+	flex-basis: calc(100% / 3 * 2) !important;
+}
+
+.u-1-of-4 {
+	flex-basis: calc(100% / 4) !important;
+}
+
+.u-3-of-4 {
+	flex-basis: calc(100% / 4 * 3) !important;
+}
+
+.u-1-of-5 {
+	flex-basis: calc(100% / 5) !important;
+}
+
+.u-2-of-5 {
+	flex-basis: calc(100% / 5 * 2) !important;
+}
+
+.u-3-of-5 {
+	flex-basis: calc(100% / 5 * 3) !important;
+}
+
+.u-4-of-5 {
+	flex-basis: calc(100% / 5 * 4) !important;
+}
+
+.u-1-of-6 {
+	flex-basis: calc(100% / 6) !important;
+}
+
+.u-5-of-6 {
+	flex-basis: calc(100% / 6 * 5) !important;
+}
+
+@media (min-width: 576px) {
+	.u-1-of-2-bp1 {
+		flex-basis: calc(100% / 2) !important;
+	}
+	.u-1-of-3-bp1 {
+		flex-basis: calc(100% / 3) !important;
+	}
+	.u-2-of-3-bp1 {
+		flex-basis: calc(100% / 3 * 2) !important;
+	}
+	.u-1-of-4-bp1 {
+		flex-basis: calc(100% / 4) !important;
+	}
+	.u-3-of-4-bp1 {
+		flex-basis: calc(100% / 4 * 3) !important;
+	}
+	.u-1-of-5-bp1 {
+		flex-basis: calc(100% / 5) !important;
+	}
+	.u-2-of-5-bp1 {
+		flex-basis: calc(100% / 5 * 2) !important;
+	}
+	.u-3-of-5-bp1 {
+		flex-basis: calc(100% / 5 * 3) !important;
+	}
+	.u-4-of-5-bp1 {
+		flex-basis: calc(100% / 5 * 4) !important;
+	}
+	.u-1-of-6-bp1 {
+		flex-basis: calc(100% / 6) !important;
+	}
+	.u-5-of-6-bp1 {
+		flex-basis: calc(100% / 6 * 5) !important;
+	}
+}
+
+@media (min-width: 768px) {
+	.u-1-of-2-bp2 {
+		flex-basis: calc(100% / 2) !important;
+	}
+	.u-1-of-3-bp2 {
+		flex-basis: calc(100% / 3) !important;
+	}
+	.u-2-of-3-bp2 {
+		flex-basis: calc(100% / 3 * 2) !important;
+	}
+	.u-1-of-4-bp2 {
+		flex-basis: calc(100% / 4) !important;
+	}
+	.u-3-of-4-bp2 {
+		flex-basis: calc(100% / 4 * 3) !important;
+	}
+	.u-1-of-5-bp2 {
+		flex-basis: calc(100% / 5) !important;
+	}
+	.u-2-of-5-bp2 {
+		flex-basis: calc(100% / 5 * 2) !important;
+	}
+	.u-3-of-5-bp2 {
+		flex-basis: calc(100% / 5 * 3) !important;
+	}
+	.u-4-of-5-bp2 {
+		flex-basis: calc(100% / 5 * 4) !important;
+	}
+	.u-1-of-6-bp2 {
+		flex-basis: calc(100% / 6) !important;
+	}
+	.u-5-of-6-bp2 {
+		flex-basis: calc(100% / 6 * 5) !important;
+	}
+}
+
+@media (min-width: 1050px) {
+	.u-1-of-2-bp3 {
+		flex-basis: calc(100% / 2) !important;
+	}
+	.u-1-of-3-bp3 {
+		flex-basis: calc(100% / 3) !important;
+	}
+	.u-2-of-3-bp3 {
+		flex-basis: calc(100% / 3 * 2) !important;
+	}
+	.u-1-of-4-bp3 {
+		flex-basis: calc(100% / 4) !important;
+	}
+	.u-3-of-4-bp3 {
+		flex-basis: calc(100% / 4 * 3) !important;
+	}
+	.u-1-of-5-bp3 {
+		flex-basis: calc(100% / 5) !important;
+	}
+	.u-2-of-5-bp3 {
+		flex-basis: calc(100% / 5 * 2) !important;
+	}
+	.u-3-of-5-bp3 {
+		flex-basis: calc(100% / 5 * 3) !important;
+	}
+	.u-4-of-5-bp3 {
+		flex-basis: calc(100% / 5 * 4) !important;
+	}
+	.u-1-of-6-bp3 {
+		flex-basis: calc(100% / 6) !important;
+	}
+	.u-5-of-6-bp3 {
+		flex-basis: calc(100% / 6 * 5) !important;
+	}
+}
+
+@media (min-width: 1200px) {
+	.u-1-of-2-bp4 {
+		flex-basis: calc(100% / 2) !important;
+	}
+	.u-1-of-3-bp4 {
+		flex-basis: calc(100% / 3) !important;
+	}
+	.u-2-of-3-bp4 {
+		flex-basis: calc(100% / 3 * 2) !important;
+	}
+	.u-1-of-4-bp4 {
+		flex-basis: calc(100% / 4) !important;
+	}
+	.u-3-of-4-bp4 {
+		flex-basis: calc(100% / 4 * 3) !important;
+	}
+	.u-1-of-5-bp4 {
+		flex-basis: calc(100% / 5) !important;
+	}
+	.u-2-of-5-bp4 {
+		flex-basis: calc(100% / 5 * 2) !important;
+	}
+	.u-3-of-5-bp4 {
+		flex-basis: calc(100% / 5 * 3) !important;
+	}
+	.u-4-of-5-bp4 {
+		flex-basis: calc(100% / 5 * 4) !important;
+	}
+	.u-1-of-6-bp4 {
+		flex-basis: calc(100% / 6) !important;
+	}
+	.u-5-of-6-bp4 {
+		flex-basis: calc(100% / 6 * 5) !important;
+	}
+}
+
+/*------------------------------------*\
+  #MEDIA
+\*------------------------------------*/
+
+/*
+    Print styles.
+    ---
+    Inlined to avoid the additional HTTP request:
+    http://www.phpied.com/delay-loading-your-print-css/
+*/
+
+@media print {
+	*,
+	*:before,
+	*:after {
+		background: transparent !important;
+		color: #000 !important;
+		/* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+	a,
+	a:visited {
+		text-decoration: underline;
+	}
+	a[href]:after {
+		content: ' (' attr(href) ')';
+	}
+	abbr[title]:after {
+		content: ' (' attr(title) ')';
+	}
+	/*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+	a[href^='#']:after,
+	a[href^='javascript:']:after {
+		content: '';
+	}
+	pre {
+		white-space: pre-wrap !important;
+	}
+	pre,
+	blockquote {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
+	/*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+	thead {
+		display: table-header-group;
+	}
+	tr,
+	img {
+		page-break-inside: avoid;
+	}
+	p,
+	h2,
+	h3 {
+		orphans: 3;
+		widows: 3;
+	}
+	h2,
+	h3 {
+		page-break-after: avoid;
+	}
+}

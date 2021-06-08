@@ -1,0 +1,5 @@
+<svg id="ico_Marker" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <path id="Path_7" data-name="Path 7" d="M0,0H32V32H0Z" fill="none"/>
+  <path id="Path_8" data-name="Path 8" d="M16,2C9.919,2,5,6.382,5,11.8,5,19.15,16,30,16,30S27,19.15,27,11.8C27,6.382,22.081,2,16,2ZM8.143,11.8c0-3.864,3.52-7,7.857-7s7.857,3.136,7.857,7c0,4.032-4.526,10.066-7.857,13.832C12.731,21.894,8.143,15.79,8.143,11.8Z" transform="translate(0)" fill="#033659"/>
+  <circle id="Ellipse_1" data-name="Ellipse 1" cx="2.5" cy="2.5" r="2.5" transform="translate(13.5 9.237)" fill="#033659"/>
+</svg>

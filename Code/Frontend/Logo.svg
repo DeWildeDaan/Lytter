@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="253.47" height="86.89" viewBox="0 0 253.47 86.89">
+  <defs>
+    <clipPath id="clip-Logo">
+      <rect width="253.47" height="86.89"/>
+    </clipPath>
+  </defs>
+  <g id="Logo" clip-path="url(#clip-Logo)">
+    <g id="Logo-2" data-name="Logo" transform="translate(-16.355 -10.025)">
+      <path id="Union_2" data-name="Union 2" d="M-11247.625,178.517h-41.125a10.011,10.011,0,0,1-10.278-9.654V110.94h61.688l0,57.922a10.02,10.02,0,0,1-9.905,9.661C-11247.374,178.524-11247.5,178.521-11247.625,178.517Zm-45.139-9.663h49.5V115.992h-49.5Zm24.6-23.711-7.112,8.9-1.841-2.187,7.163-8.88-7.138-8.925,1.79-2.216,7.138,8.88,7.087-8.829,1.79,2.213-7.163,8.877,7.163,8.854-1.79,2.213Zm-36.01-39.031V96.46h18l5.138-4.826h25.7l5.141,4.826h17.992v9.651Z" transform="translate(11320.527 -81.609)" fill="#3f6474"/>
+      <text id="Lytter" transform="translate(94.829 78.634)" fill="#00040d" font-size="68" font-family="Interstate-ExtraLight, Interstate" font-weight="200"><tspan x="0" y="0">Lytter</tspan></text>
+    </g>
+  </g>
+</svg>
