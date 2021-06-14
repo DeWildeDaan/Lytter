@@ -1,19 +1,19 @@
 ====Please replace the GPIO pins with the GPIO pins that match your setup====
 LCD_e=20
-LCD_rw=21
+LCD_rs=21
 HCSR_trigger=16
 HCSR_echo=24
 HX711_dout=13
 HX711_sck=19
 magnet=26
-contactsensor=23
+contactsensor=18
 btn_display=25
 
 ===Pleace replace the ratio with the matching ratio of your load cell===
 ===You can tweak the offset to make your readings more accurate (The offset is subtracted from the reading)===
 ===See HX711_Ratio to configure your load cell and calculate your ratio===
 Ratio=506.232
-Offset=0.4
+Offset=0.92
 
 ===Please replace the trashcan ID with the ID thats matches the trashcan in your database===
 TrashcanID=1

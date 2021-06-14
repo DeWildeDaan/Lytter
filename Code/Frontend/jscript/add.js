@@ -9,27 +9,30 @@ let valName, valLat, valLong, valTreshhold, valInterval, valMessage;
 //#endregion
 
 //#region ***  Callback-Visualisation - show___         ***********
-const showStatus = function() {
+const showStatus = function () {
 	let lastValue = htmlAddTrashcan.value;
 	htmlAddTrashcan.value = valMessage;
-	setTimeout(function(){
-		htmlAddTrashcan.value = lastValue;
-		htmlAddTrashcan.disabled = false;
-		if(valMessage == 'Trashcan added!'){
-			htmlName.value = "";
-			htmlLatitude.value = "";
-			htmlLongitude.value = "";
-			htmlTreshHold.value = "";
-			htmlInterval.value = "";
-		}
-	}.bind(this), 2000);
-}
+	setTimeout(
+		function () {
+			htmlAddTrashcan.value = lastValue;
+			htmlAddTrashcan.disabled = false;
+			if (valMessage == 'Trashcan added!') {
+				htmlName.value = '';
+				htmlLatitude.value = '';
+				htmlLongitude.value = '';
+				htmlTreshHold.value = '';
+				htmlInterval.value = '';
+			}
+		}.bind(this),
+		2000
+	);
+};
 //#endregion
 
 //#region ***  Callback-No Visualisation - callback___  ***********
-const callbackError = function(jsonObject) {
+const callbackError = function (jsonObject) {
 	console.log(jsonObject);
-}
+};
 //#endregion
 
 //#region ***  Data Access - get___                     ***********
@@ -45,77 +48,76 @@ const listentoNav = function () {
 	}
 };
 
-const listentoValidation = function() {
-	htmlName.addEventListener('input', function(){
-		if(this.value == ""){
+const listentoValidation = function () {
+	htmlName.addEventListener('input', function () {
+		if (this.value == '') {
 			this.classList.add('c-form__invalid');
 			valName = false;
 		} else {
 			this.classList.remove('c-form__invalid');
 			valName = true;
 		}
-	})
+	});
 
-	htmlLatitude.addEventListener('input', function(){
-		if(this.value == "" | isNaN(this.value) | this.value == 0){
+	htmlLatitude.addEventListener('input', function () {
+		if ((this.value == '') | isNaN(this.value) | (this.value == 0)) {
 			this.classList.add('c-form__invalid');
 			valLat = false;
 		} else {
 			this.classList.remove('c-form__invalid');
 			valLat = true;
 		}
-	})
+	});
 
-	htmlLongitude.addEventListener('input', function(){
-		if(this.value == "" | isNaN(this.value)| this.value == 0){
+	htmlLongitude.addEventListener('input', function () {
+		if ((this.value == '') | isNaN(this.value) | (this.value == 0)) {
 			this.classList.add('c-form__invalid');
 			valLong = false;
 		} else {
 			this.classList.remove('c-form__invalid');
 			valLong = true;
 		}
-	})
+	});
 
-	htmlTreshHold.addEventListener('input', function(){
-		if(this.value == "" | isNaN(this.value)| this.value == 0){
+	htmlTreshHold.addEventListener('input', function () {
+		if ((this.value == '') | isNaN(this.value) | (this.value == 0)) {
 			this.classList.add('c-form__invalid');
 			valTreshhold = false;
 		} else {
 			this.classList.remove('c-form__invalid');
 			valTreshhold = true;
 		}
-	})
+	});
 
-	htmlInterval.addEventListener('input', function(){
-		if(this.value == "" | isNaN(this.value)| this.value == 0){
+	htmlInterval.addEventListener('input', function () {
+		if ((this.value == '') | isNaN(this.value) | (this.value == 0)) {
 			this.classList.add('c-form__invalid');
 			valInterval = false;
 		} else {
 			this.classList.remove('c-form__invalid');
 			valInterval = true;
 		}
-	})
-	
+	});
 };
 
-const listentoAdd = function() {
-	htmlAddTrashcan.addEventListener('click', function(){
+const listentoAdd = function () {
+	htmlAddTrashcan.addEventListener('click', function () {
 		valMessage = 'Nothing to add!';
 		htmlAddTrashcan.disabled = true;
 		let url = `${backend}/trashcans`;
-		if(valName == true){
-			if(valLat == true){
-				if(valLong == true){
-					if(valTreshhold == true) {
-						if(valInterval == true) {
+		if (valName == true) {
+			if (valLat == true) {
+				if (valLong == true) {
+					if (valTreshhold == true) {
+						if (valInterval == true) {
 							const body = JSON.stringify({
 								name: htmlName.value,
 								lat: htmlLatitude.value,
 								long: htmlLongitude.value,
 								treshhold: htmlTreshHold.value,
-								interval: htmlInterval.value
+								interval: htmlInterval.value,
 							});
-							valMessage = 'Trashcan added!';	
+							valMessage = 'Trashcan added!';
 							handleData(url, showStatus, callbackError, 'POST', body);
 						} else {
 							valMessage = 'Invalid interval';
@@ -137,8 +139,7 @@ const listentoAdd = function() {
 			valMessage = 'Invalid Name';
 			showStatus();
 		}
-		
-		});
+	});
 };
 // Event listeners
 
@@ -157,7 +158,6 @@ const init = function () {
 	listentoNav();
 	listentoValidation();
 	listentoAdd();
-	
 };
 
 document.addEventListener('DOMContentLoaded', init);

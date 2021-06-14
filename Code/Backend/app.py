@@ -14,6 +14,8 @@ from helpers.Magnet import Magnet
 
 # ******************Backend imports******************
 import threading
+import subprocess
+import shlex
 from flask_cors import CORS
 from flask_socketio import SocketIO, emit, send
 from flask import Flask, jsonify, request
@@ -51,7 +53,7 @@ with open("/home/student/2020-2021-projectone-DeWildeDaan/Code/Backend/appconfig
 f.close()
 # Defining the GPIO pins
 LCD_e = int(ids["LCD_e"])
-LCD_rw = int(ids["LCD_rw"])
+LCD_rs = int(ids["LCD_rs"])
 HCSR_trigger = int(ids["HCSR_trigger"])
 HCSR_echo = int(ids["HCSR_echo"])
 HX711_dout = int(ids["HX711_dout"])
@@ -80,7 +82,7 @@ interval = treshhold_and_interval['TimeInterval']
 
 
 # LOADING CLASSES
-lcd = KlasseLCDPCF(False, LCD_e, LCD_rw)
+lcd = KlasseLCDPCF(False, LCD_e, LCD_rs)
 hcsr = HCSR04(HCSR_trigger, HCSR_echo)
 hx = HX711(HX711_dout, HX711_sck)
 mag = Magnet(magnet, 100000)
@@ -99,8 +101,8 @@ def empty(channel):
     if(aantal >= 2):
         full = 0
         aantal = 0
-        log_empty()
         log_magnet(0)
+        log_empty()
 
 
 def plus(channel):
@@ -110,6 +112,7 @@ def plus(channel):
     else:
         btn_state = 0
     show_display()
+    
 
 
 # GET SENSOR DATA EVERY SET TIME AND PASS IT ON TO THE RIGHT FUNCTIONS
@@ -125,25 +128,19 @@ def distance():
 
 def get_volume():
     values = []
-    for i in range(0, 100):
+    for i in range(0, 150):
         values.append(int(distance()))
     data_mean, data_std = mean(values), std(values)
     cut_off = data_std * 3
     lower, upper = data_mean - cut_off, data_mean + cut_off
     outliers_removed = [x for x in values if x >= lower and x <= upper]
-    average = mean(outliers_removed)
-    volume_precentage = 100 - ((average/50)*100)
+    average = mean(outliers_removed) - 22
+    volume_precentage = 100 - ((average/30)*100)
     if volume_precentage < 0:
         volume_precentage = 0
+    elif volume_precentage > 100:
+        volume_precentage = 100
     return int(volume_precentage)
-
-
-def check_volume(volume):
-    global full
-    global treshhold
-    if volume >= treshhold:
-        full = 1
-        log_magnet(1)
 
 
 # Weight
@@ -156,6 +153,7 @@ def get_weight():
         kg = 0
     return round(kg, 2)
 
+
 # Check the time to see if set amount of time has passed
 
 
@@ -167,6 +165,19 @@ def check_sensors(current_time):
         if (current_time - prev_time) > interval:
             prev_time = current_time
             get_sensors()
+    else:
+        pass
+
+
+# Checks the values to see if the trashcan is full
+
+
+def check_full(volume, weight):
+    global full
+    global treshhold
+    if volume >= treshhold or weight >= 25.00:
+        full = 1
+        log_magnet(1)
 
 # Get the data and pass it on to the log functions
 
@@ -174,10 +185,11 @@ def check_sensors(current_time):
 def get_sensors():
     volume = get_volume()
     weight = get_weight()
-    check_volume(volume)
+    check_full(volume, weight)
     show_volume(volume)
     log_volume(volume)
     log_weight(weight)
+
 
 # CHECK MAGNET STATE AND TURN IT ON/OFF
 
@@ -201,9 +213,13 @@ def getIp():
 
 def show_ip():
     ips = getIp()
+    if len(ips) == 2:
+        row2 = ips[0]
+    elif len(ips) == 3:
+        row2 = ips[1]
+
     lcd.resetLCD()
     lcd.sendMessage('Surf to:')
-    row2 = ips[1]
     lcd.secondRow()
     lcd.sendMessage(row2)
 
@@ -300,10 +316,12 @@ setup()
 
 
 def all_out():
-    while True:
-        check_sensors(time.time())
-        check_magnet()
-
+    try:
+        while True:
+            check_sensors(time.time())
+            check_magnet()
+    except IOError as e:
+        print(e)
 
 thread = threading.Timer(0.1, all_out)
 thread.start()
@@ -407,6 +425,13 @@ def update_trashcan(id):
 @socketio.on('connect')
 def initial_connection():
     print('A new client connected.')
+
+
+@socketio.on('F2B_poweroff')
+def trashcan_info():
+    print("**** Powering off ****")
+    cmd = shlex.split("sudo shutdown -h now")
+    subprocess.call(cmd)
 
 
 @socketio.on('F2B_info')

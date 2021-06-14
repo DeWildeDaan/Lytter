@@ -9,99 +9,99 @@ let volumechart, mainchart;
 //#endregion
 
 //#region ***  Callback-Visualisation - show___         ***********
-const showVolumeChart = function(data) {
+const showVolumeChart = function (data) {
 	var options = {
 		chart: {
-		  height: '75%',
-		  type: "radialBar"
+			height: '75%',
+			type: 'radialBar',
 		},
-		colors:["#3F6474"],
-		series:[data],
-		
-		plotOptions: {
-		  radialBar: {
-			hollow: {
-			  margin: 15,
-			  size: "60%"
-			},
-		   
-			dataLabels: {
-			  showOn: "always",
-			  name: {
-				offsetY: 20,
-				show: true,
-				color: "#00040D",
-				fontSize: "10px"
-			  },
-			  value: {
-				offsetY: -19,
-				color: "#00040D",
-				fontSize: "20px",
-				show: true
-			  }
-			},
+		colors: ['#3F6474'],
+		series: [data],
 
-			track: {
-				dropShadow: {
-				  enabled: true,
-				  top: 3,
-				  left: 0,
-				  blur: 4,
-				  opacity: 0.15
-				}
-			}
-			
-		  }
+		plotOptions: {
+			radialBar: {
+				hollow: {
+					margin: 15,
+					size: '60%',
+				},
+
+				dataLabels: {
+					showOn: 'always',
+					name: {
+						offsetY: 20,
+						show: true,
+						color: '#00040D',
+						fontSize: '10px',
+					},
+					value: {
+						offsetY: -19,
+						color: '#00040D',
+						fontSize: '20px',
+						show: true,
+					},
+				},
+
+				track: {
+					dropShadow: {
+						enabled: true,
+						top: 3,
+						left: 0,
+						blur: 4,
+						opacity: 0.15,
+					},
+				},
+			},
 		},
-	  
+
 		stroke: {
-		  lineCap: "round",
+			lineCap: 'round',
 		},
-		labels: ["Full"]
-	  }
-	  
-	  volumechart = new ApexCharts(document.querySelector(".js-chart-volume"), options);
-	  
-	  volumechart.render();
+		labels: ['Full'],
+	};
+
+	volumechart = new ApexCharts(document.querySelector('.js-chart-volume'), options);
+
+	volumechart.render();
 };
 
-const showMainChart = function() {
+const showMainChart = function () {
 	var options = {
 		chart: {
-		  type: 'line',
-		  height: 450
+			type: 'line',
+			height: 450,
 		},
-		series: [{
-		  data: [0]
-		}],
-		colors:["#3F6474"],
+		series: [
+			{
+				data: [0],
+			},
+		],
+		colors: ['#3F6474'],
 		stroke: {
 			curve: 'smooth',
-			width: 2
-		  },
+			width: 2,
+		},
 
 		xaxis: {
-		  categories: [0]
-		}
-	  }
-	  
-	  mainchart = new ApexCharts(document.querySelector(".js-chart-main"), options);
-	  
-	  mainchart.render();
-	  
+			categories: [0],
+		},
+	};
+
+	mainchart = new ApexCharts(document.querySelector('.js-chart-main'), options);
+
+	mainchart.render();
 };
 
 const showInfo = function (jsonObject) {
 	let trashcan = jsonObject.info;
 	htmlTrashcan.innerHTML = trashcan.Name;
-	if(trashcan.Flagged == 1) {
+	if (trashcan.Flagged == 1) {
 		htmlFlagText.innerHTML = 'This trashcan is flagged as an illegal dumping spot.';
 		let html = `
 		<svg class="c-flag__btn-symbol" id="assistant_photo_black_24dp_1_" data-name="assistant_photo_black_24dp (1)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 			<path id="Path_25" data-name="Path 25" d="M0,0H24V24H0Z" fill="none"/>
 			<path id="Path_26" data-name="Path 26" d="M14.4,6,14,4H5V21H7V14h5.6l.4,2h7V6Z" fill="#3f6474"/>
 		</svg>
-		`
+		`;
 		htmlFlag.innerHTML = html;
 	} else {
 		htmlFlagText.innerHTML = 'Flag this trashcan as an illegal dumping spot.';
@@ -110,18 +110,17 @@ const showInfo = function (jsonObject) {
 			<path id="Path_23" data-name="Path 23" d="M0,0H24V24H0Z" fill="none"/>
 			<path id="Path_24" data-name="Path 24" d="M12.36,6l.08.39L12.76,8H18v6H14.64l-.08-.39L14.24,12H7V6h5.36M14,4H5V21H7V14h5.6l.4,2h7V6H14.4Z" fill="#3f6474"/>
 		</svg>
-		`
+		`;
 		htmlFlag.innerHTML = html;
 	}
 
 	flagstate = trashcan.Flagged;
 	listentoFlag();
-
 };
 
-const showMagnet = function(jsonObject) {
+const showMagnet = function (jsonObject) {
 	magnetstate = jsonObject.state;
-	if(magnetstate == 1){
+	if (magnetstate == 1) {
 		htmlLockText.innerHTML = 'Closed';
 		htmlLock.innerHTML = `
 		<svg class="c-lid__lock-symbol" id="lock_black_24dp_2_" data-name="lock_black_24dp (2)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -142,23 +141,25 @@ const showMagnet = function(jsonObject) {
 		`;
 	}
 	listentoLid();
-}
+};
 
-const showCollections = function(jsonObject){
+const showCollections = function (jsonObject) {
 	var data = [];
 	var labels = [];
-	for(let collection of jsonObject.collections){
-		data.push(collection.collections)
-		labels.push(collection.date)
+	for (let collection of jsonObject.collections) {
+		data.push(collection.collections);
+		labels.push(collection.date);
 	}
 
 	mainchart.updateOptions({
-		series: [{
-		  name: 'Collections',
-		  data: data
-		}],
+		series: [
+			{
+				name: 'Collections',
+				data: data,
+			},
+		],
 		xaxis: {
-			categories: labels
+			categories: labels,
 		},
 		yaxis: {
 			title: {
@@ -171,28 +172,29 @@ const showCollections = function(jsonObject){
 					fontSize: '16px',
 					fontFamily: 'Interstate, Helvetica, Arial, sans-serif',
 					fontWeight: 300,
-					
 				},
-			}
-		}
-	  })
-}
+			},
+		},
+	});
+};
 
-const showWeights = function(jsonObject){
+const showWeights = function (jsonObject) {
 	var data = [];
 	var labels = [];
-	for(let weight of jsonObject.weights){
-		data.push(weight.amount)
-		labels.push(weight.time)
+	for (let weight of jsonObject.weights) {
+		data.push(weight.amount);
+		labels.push(weight.time);
 	}
 
 	mainchart.updateOptions({
-		series: [{
-		  name: 'Trash collected in Kg',
-		  data: data
-		}],
+		series: [
+			{
+				name: 'Trash collected in Kg',
+				data: data,
+			},
+		],
 		xaxis: {
-			categories: labels
+			categories: labels,
 		},
 		yaxis: {
 			title: {
@@ -205,48 +207,46 @@ const showWeights = function(jsonObject){
 					fontSize: '16px',
 					fontFamily: 'Interstate, Helvetica, Arial, sans-serif',
 					fontWeight: 300,
-					
 				},
-			}
-		}
-	  })
-}
+			},
+		},
+	});
+};
 //#endregion
 
 //#region ***  Callback-No Visualisation - callback___  ***********
-const callbackError = function(jsonObject) {
+const callbackError = function (jsonObject) {
 	console.log(jsonObject);
 };
 //#endregion
 
 //#region ***  Data Access - get___                     ***********
 
-const getTrashcanInfo = function() {
-	socket.emit('F2B_info', {id:trashcanid});
-}
-
-const getMagnet = function() {
-	socket.emit('F2B_magnet', {id:trashcanid});
-}
-
-const getWeight = function() {
-	socket.emit('F2B_weight', {id:trashcanid});
+const getTrashcanInfo = function () {
+	socket.emit('F2B_info', { id: trashcanid });
 };
 
-const getVolume = function() {
-	socket.emit('F2B_volume', {id: trashcanid});
+const getMagnet = function () {
+	socket.emit('F2B_magnet', { id: trashcanid });
 };
 
-const getCollections = function() {
-	let url = `${backend}/trashcan/${trashcanid}/collections`
-	handleData(url, showCollections, callbackError, 'GET')
-}
+const getWeight = function () {
+	socket.emit('F2B_weight', { id: trashcanid });
+};
 
-const getWeights = function() {
-	let url = `${backend}/trashcan/${trashcanid}/weights`
-	handleData(url, showWeights, callbackError, 'GET')
-}
+const getVolume = function () {
+	socket.emit('F2B_volume', { id: trashcanid });
+};
 
+const getCollections = function () {
+	let url = `${backend}/trashcan/${trashcanid}/collections`;
+	handleData(url, showCollections, callbackError, 'GET');
+};
+
+const getWeights = function () {
+	let url = `${backend}/trashcan/${trashcanid}/weights`;
+	handleData(url, showWeights, callbackError, 'GET');
+};
 
 //#endregion
 
@@ -260,96 +260,94 @@ const listentoNav = function () {
 	}
 };
 
-const listentoFlag = function() {
-	htmlFlag.addEventListener('click', function(){
-		if(flagstate == 1){
+const listentoFlag = function () {
+	htmlFlag.addEventListener('click', function () {
+		if (flagstate == 1) {
 			var newstate = 0;
 		} else {
 			var newstate = 1;
 		}
-		socket.emit('F2B_update_flag', {id: trashcanid, state: newstate});
-	})
-}
+		socket.emit('F2B_update_flag', { id: trashcanid, state: newstate });
+	});
+};
 
-const listentoLid = function() {
-	htmlLid.addEventListener('click', function(){
-		if(magnetstate == 1){
+const listentoLid = function () {
+	htmlLid.addEventListener('click', function () {
+		if (magnetstate == 1) {
 			var newstate = 0;
 		} else {
 			var newstate = 1;
 		}
-		socket.emit('F2B_update_magnet', {id: trashcanid, state: newstate, user:'Webuser'});
-	})
-}
+		socket.emit('F2B_update_magnet', { id: trashcanid, state: newstate, user: 'Webuser' });
+	});
+};
 
-const listentoCollected =function() {
-	htmlcollected.addEventListener('click', function(){
-		this.classList.add('c-is-selected')
-		htmlcollections.classList.remove('c-is-selected')
+const listentoCollected = function () {
+	htmlcollected.addEventListener('click', function () {
+		this.classList.add('c-is-selected');
+		htmlcollections.classList.remove('c-is-selected');
 		getWeights();
-	})
-} 
+	});
+};
 
-const listentoCollections =function() {
-	htmlcollections.addEventListener('click', function(){
-		this.classList.add('c-is-selected')
-		htmlcollected.classList.remove('c-is-selected')
+const listentoCollections = function () {
+	htmlcollections.addEventListener('click', function () {
+		this.classList.add('c-is-selected');
+		htmlcollected.classList.remove('c-is-selected');
 		getCollections();
-	})
-} 
+	});
+};
 // Event listeners
 
 // Socketio listener
-const listentoSocket = function() {
-	socket.on('B2F_info', function(jsonObject){
-		if(jsonObject.info.TrashcanID == trashcanid){
+const listentoSocket = function () {
+	socket.on('B2F_info', function (jsonObject) {
+		if (jsonObject.info.TrashcanID == trashcanid) {
 			showInfo(jsonObject);
 		}
-	})
+	});
 
-	socket.on('B2F_update_flag', function(jsonObject){
-		if(jsonObject.info.TrashcanID == trashcanid){
+	socket.on('B2F_update_flag', function (jsonObject) {
+		if (jsonObject.info.TrashcanID == trashcanid) {
 			showInfo(jsonObject);
 		}
-	})
+	});
 
-	socket.on('B2F_magnet', function(jsonObject){
-		if(jsonObject.id == trashcanid){
-			showMagnet(jsonObject)
+	socket.on('B2F_magnet', function (jsonObject) {
+		if (jsonObject.id == trashcanid) {
+			showMagnet(jsonObject);
 		}
-	})
+	});
 
-	socket.on('B2F_update_magnet', function(jsonObject){
-		if(jsonObject.id == trashcanid){
-			showMagnet(jsonObject)
+	socket.on('B2F_update_magnet', function (jsonObject) {
+		if (jsonObject.id == trashcanid) {
+			showMagnet(jsonObject);
 		}
-	})
+	});
 
-	socket.on('B2F_volume', function(jsonObject){
-		if(jsonObject.id == trashcanid){
+	socket.on('B2F_volume', function (jsonObject) {
+		if (jsonObject.id == trashcanid) {
 			showVolumeChart(jsonObject.volume);
 		}
-		if(htmlcollected.classList.contains('c-is-selected')){
+		if (htmlcollected.classList.contains('c-is-selected')) {
 			getWeights();
 		}
-	})
+	});
 
-	socket.on('B2F_weight', function(jsonObject){
-		if(jsonObject.id == trashcanid){
+	socket.on('B2F_weight', function (jsonObject) {
+		if (jsonObject.id == trashcanid) {
 			htmlWeight.innerHTML = `${jsonObject.weight} Kg`;
 		}
-		
-	})
+	});
 
-	socket.on('B2F_empty', function(){
-		if(htmlcollections.classList.contains('c-is-selected')){
+	socket.on('B2F_empty', function () {
+		if (htmlcollections.classList.contains('c-is-selected')) {
 			getCollections();
-		}
-		else if(htmlcollected.classList.contains('c-is-selected')){
+		} else if (htmlcollected.classList.contains('c-is-selected')) {
 			getWeights();
 		}
-	})
-}
+	});
+};
 //#endregion
 
 //#region ***  Init / DOMContentLoaded                  ***********
@@ -357,7 +355,7 @@ const init = function () {
 	console.log('DOM Content Loaded.');
 	let urlParams = new URLSearchParams(window.location.search);
 	trashcanid = parseInt(urlParams.get('trashcan'), 10);
-	if(trashcanid) {
+	if (trashcanid) {
 		htmlTrashcan = document.querySelector('.js-trashcan');
 		htmlFlag = document.querySelector('.js-flag');
 		htmlFlagText = document.querySelector('.js-flag-text');
@@ -384,16 +382,10 @@ const init = function () {
 
 		listentoCollected();
 		listentoCollections();
-		
-		
-
-	} else{
+	} else {
 		window.location = '/index.html';
 	}
 };
 
 document.addEventListener('DOMContentLoaded', init);
 //#endregion
-
-
-  

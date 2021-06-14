@@ -781,10 +781,10 @@ a:focus {
 	background-color: #c6c8cb;
 }
 
-.c-form__invalid{
-	background-color: #FFCAC9;
+.c-form__invalid {
+	background-color: #ffcac9;
 	opacity: 0.8;
-	border: 1px solid #FF6A74;
+	border: 1px solid #ff6a74;
 	border-radius: 2px;
 }
 
@@ -808,7 +808,7 @@ a:focus {
 .c-trashcan {
 	width: 100%;
 	display: grid;
-	grid-template-columns: 60% 10% 10%;
+	grid-template-columns: 40% 10% 10% 10%;
 	gap: 1.5rem;
 	margin-top: 16px;
 	align-items: center;
@@ -819,7 +819,7 @@ a:focus {
 
 .c-trashcan__name {
 	margin: 27px 24px;
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: 300;
 }
 
@@ -834,6 +834,12 @@ a:focus {
 }
 
 .c-trashcan__edit-symbol {
+	height: 24px;
+	cursor: pointer;
+	will-change: opacity;
+}
+
+.c-trashcan__poweroff-symbol {
 	height: 24px;
 	cursor: pointer;
 	will-change: opacity;
@@ -854,7 +860,14 @@ a:focus {
 .c-trashcan__delete-symbol:hover {
 	opacity: 0.7;
 }
-S .c-trashcan__edit-symbol:hover {
+
+.c-trashcan__poweroff-symbol {
+	height: 24px;
+	cursor: pointer;
+	will-change: opacity;
+}
+
+.c-trashcan__poweroff-symbol:hover {
 	opacity: 0.7;
 }
 
@@ -865,6 +878,9 @@ S .c-trashcan__edit-symbol:hover {
 }
 
 @media (max-width: 350px) {
+	.c-trashcan {
+		grid-template-columns: 30% 10% 10% 10%;
+	}
 	.c-trashcan__name {
 		font-size: 12px;
 	}
@@ -872,6 +888,9 @@ S .c-trashcan__edit-symbol:hover {
 		height: 16px;
 	}
 	.c-trashcan__edit-symbol {
+		height: 16px;
+	}
+	.c-trashcan__poweroff-symbol {
 		height: 16px;
 	}
 }

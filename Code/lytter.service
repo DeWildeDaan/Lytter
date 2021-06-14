@@ -7,7 +7,7 @@ WorkingDirectory=PASTE THE PATH TO THE BACKEND FOLDER
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
-User=USER YOU CHOSE WHILE SETTING UP
+User=student
 [Install]
 WantedBy=multi-user.target
 
